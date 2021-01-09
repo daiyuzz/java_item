@@ -1,6 +1,5 @@
 package com.macro.mall.tiny.common.api;
 
-import java.security.PrivateKey;
 
 /**
  * daiyu
