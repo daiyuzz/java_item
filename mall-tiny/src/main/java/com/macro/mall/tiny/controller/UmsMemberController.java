@@ -1,14 +1,13 @@
 package com.macro.mall.tiny.controller;
 
 import com.macro.mall.tiny.common.api.CommonResult;
+import com.macro.mall.tiny.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * daiyu
@@ -19,6 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/sso")
 public class UmsMemberController {
 
+    @Autowired
+    private UmsMemberService memberService;
+
 
     @ApiOperation(value = "获取验证码")
     @GetMapping(value = "/getAuthCode")
@@ -28,6 +30,19 @@ public class UmsMemberController {
     public CommonResult getAuthCode(
             @RequestParam(value = "telephone") String telephone
     ) {
-        return null;
+        return memberService.generateAuthCode(telephone);
+    }
+
+    @ApiOperation(value = "判断验证码是否正确")
+    @PostMapping(value = "/verifyAuthCode")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "telephone", value = "手机号", paramType = "query"),
+            @ApiImplicitParam(name = "authCode", value = "验证码", paramType = "query")
+    })
+    public CommonResult updatePassword(
+            @RequestParam(value = "telephone") String telephone,
+            @RequestParam String authCode
+    ) {
+        return memberService.verifyAuthCode(telephone, authCode);
     }
 }
