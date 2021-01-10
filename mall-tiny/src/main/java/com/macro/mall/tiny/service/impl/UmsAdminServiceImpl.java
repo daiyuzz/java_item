@@ -1,9 +1,11 @@
 package com.macro.mall.tiny.service.impl;
 
 import com.macro.mall.tiny.common.utils.JwtTokenUtil;
+import com.macro.mall.tiny.dao.UmsAdminRoleRelationDao;
 import com.macro.mall.tiny.mbg.mapper.UmsAdminMapper;
 import com.macro.mall.tiny.mbg.model.UmsAdmin;
 import com.macro.mall.tiny.mbg.model.UmsAdminExample;
+import com.macro.mall.tiny.mbg.model.UmsPermission;
 import com.macro.mall.tiny.service.UmsAdminService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,6 +44,9 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
+    @Resource
+    private UmsAdminRoleRelationDao adminRoleRelationDao;
+
     @Override
     public UmsAdmin register(UmsAdmin umsAdminParam) {
         UmsAdmin umsAdmin = new UmsAdmin();
@@ -77,5 +82,10 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             LOGGER.warn("登录异常：{}", e.getMessage());
         }
         return token;
+    }
+
+    @Override
+    public List<UmsPermission> getPermissionList(Long adminId) {
+        return adminRoleRelationDao.getPermissionList(adminId);
     }
 }
