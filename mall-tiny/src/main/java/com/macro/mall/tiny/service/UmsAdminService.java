@@ -14,4 +14,13 @@ public interface UmsAdminService {
      * @return
      */
     UmsAdmin register(UmsAdmin umsAdminParam);
+
+    /**
+     * 登录返回token
+     *
+     * @param username
+     * @param password
+     * @return 生成的JWT的token
+     */
+    String login(String username, String password);
 }
