@@ -1,4 +1,4 @@
-package com.daiyu.shiro;
+package com.daiyu.shiro.example;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -25,7 +25,7 @@ public class MyRealm extends AuthorizingRealm {
     Map<String, String> userMap = new HashMap<>(16);
 
     {
-        userMap.put("123", "123");
+        userMap.put("qwe", "123");
         super.setName("myRealm");
     }
 
