@@ -11,6 +11,10 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848 # nacos服务地址
+      discovery:
+        cluster-name: SH #上海
+        namespace: 2c262ac0-391f-45af-a6e7-80b5534dd4a6
+        ephemeral: false # 非临时实例
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
   configuration:
