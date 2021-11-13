@@ -1,0 +1,28 @@
+{
+  "activity_count_limit": [{
+   "activity": 1,
+    "common_day_time": "",
+    "common_month_time": "",
+    "confirmation_day_time": "",
+    "mobile_number_limit": ""
+
+  },
+    {
+
+    },
+    {
+
+    }
+
+  ],
+  "activity_age_limit": [{
+    "age_limit": "80"
+  }
+  ],
+  "activity_time_limit": [
+    {
+      "activity_duration_time": 30,
+      "activity_interval_time": 24
+    }
+  ]
+}
