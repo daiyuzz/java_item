@@ -9,4 +9,6 @@ import com.daiyu.aop.controller.response.ResultResponse;
 public interface AopTestService {
 
     Integer getResult(ParamRequest request);
+
+    Integer getResult(Integer age, String name);
 }

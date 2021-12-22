@@ -19,4 +19,13 @@ public class AopTestServiceImpl implements AopTestService{
         response.setData("123");
         return response.getCode();
     }
+
+    @Override
+    public Integer getResult(Integer age, String name) {
+        ResultResponse response = new ResultResponse();
+        response.setCode(200);
+        response.setMessage("初始数据");
+        response.setData("123");
+        return response.getCode();
+    }
 }
