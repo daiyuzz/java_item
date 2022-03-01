@@ -1,16 +1,14 @@
 package com.daiyu.aop.aop;
 
-import com.daiyu.aop.controller.request.ParamRequest;
+import com.daiyu.aop.controller.response.ResultResponse;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import javax.xml.transform.Source;
+import java.util.List;
+
 
 /**
  * created by dyx on 2021/11/24
@@ -22,19 +20,11 @@ public class ResultAop {
     @AfterReturning(value = "execution(* com.daiyu.aop.controller.AopTestController.getResult(..))", returning = "keys")
     public void change(JoinPoint joinPoint, Object keys) {
         System.out.println("这是一个后置通知.." + keys);
-        if (keys instanceof Integer) {
-            Integer key = (Integer) keys;
-            System.out.println(key);
-        }
-        // 获取传入参数
-        Object[] args = joinPoint.getArgs();
-        for (Object obj : args) {
-            if (!Objects.isNull(obj)) {
-                ParamRequest request = (ParamRequest) obj;
-                Integer age = request.getAge();
-                System.out.println(age);
-            }
-        }
+        List<ResultResponse> results = (List<ResultResponse>) keys;
+        results.forEach(result -> {
+            System.out.println(result);
+        });
+
     }
 
 

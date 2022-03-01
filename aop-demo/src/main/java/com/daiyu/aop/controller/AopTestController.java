@@ -6,6 +6,8 @@ import com.daiyu.aop.service.AopTestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * created by dyx on 2021/11/24
  */
@@ -17,7 +19,7 @@ public class AopTestController {
     private AopTestService service;
 
     @GetMapping("/result")
-    public Integer getResult(ParamRequest request){
+    public List<ResultResponse> getResult(ParamRequest request){
         return service.getResult(request);
     }
 
